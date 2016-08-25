@@ -1,0 +1,21 @@
+{
+  "name": "helmsman",
+  "authors": [
+    "Michael Pope <michael@dtcorp.com.au>"
+  ],
+  "description": "AngularJS nested menu system",
+  "main": "src/helmsman.js",
+  "keywords": [
+    "menu"
+  ],
+  "license": "MIT",
+  "homepage": "github.com/map7/helmsman",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
