@@ -15,14 +15,14 @@ menuDirective = function(){
             locationToMenu: '='
         },
         templateUrl: templatePath,
-        controller: MenuController
+        controller: HelmsmanController
     }
 };
 
 angular.module('helmsman').directive('menuDirective', menuDirective)
 
 // Controller
-MenuController = ["$scope", function($scope){
+HelmsmanController = ["$scope", function($scope){
 
     // Check menus
     if($scope.menus && $scope.locationToMenu){
@@ -41,4 +41,4 @@ MenuController = ["$scope", function($scope){
     
 }]
 
-angular.module('helmsman').controller('MenuController', MenuController)
+angular.module('helmsman').controller('HelmsmanController', HelmsmanController)
