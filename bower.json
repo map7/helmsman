@@ -3,7 +3,7 @@
   "authors": [
     "Michael Pope <michael@dtcorp.com.au>"
   ],
-  "description": "AngularJS nested menu system",
+  "description": "AngularJS multi layer menu system",
   "main": "src/helmsman.js",
   "keywords": [
     "menu"
