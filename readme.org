@@ -1,0 +1,78 @@
+* Helmsman
+
+Helmsman is a menu system which scales up for large applications complete with breadcrumbs and shortcut keys (via angular-hotkeys).
+
+** Features
+
+- Multi-level menu
+- Quickly load each menu independent of anything else on your page
+- Use shortcut keys
+- Include breadcrumbs or not.
+
+** Requirements
+
+| [[https://github.com/angular-ui/ui-router][ui-router]]       | required               |
+| [[http://chieffancypants.github.io/angular-hotkeys/][angular-hotkeys]] | optional for shortcuts |
+
+** Installation
+
+: bower install helmsman
+
+** Config
+
+Define your menu in your main controller.
+
+Basic example one level menu
+:     $scope.menus = {
+:         main: [
+:             {label: "Home",  state: "home"},
+:             {label: "Blog",  state: "blogs"},
+:             {label: "Contact Us",  state: "contactus"},
+:             {label: "About Us",  state: "aboutus"}
+:         ]
+:     }
+
+
+
+Full example with three levels.
+:     $scope.menus = {
+:         main: [
+:             {label: "Costings Menu...",  link: "costings"},
+:             {label: "Settings Menu...",  link: "settings"}
+:         ],
+:         costings:  [
+:             {label: "Main",      breadcrumb: "main"},
+:             {label: "Invoices",  state: "invoices"}
+:         ],
+:         settings:  [
+:             {label: "Main",      breadcrumb: "main"},
+:             {label: "Accounting Menu...",link: "settings_accounting"},
+:             {label: "Account",   state: "account"}
+:         ],
+:         settings_accounting: [
+:             {label: "Main",      breadcrumb: "main"},
+:             {label: "Settings",  breadcrumb: "settings"},
+:             {label: "Profile",   state: "profile"}
+:         ]
+:     }
+
+*** States
+
+Items with a state relate to the ui-router
+
+*** Links
+
+Link to another menu system
+
+*** Breadcrumbs
+
+These are at the top and allows you to step back to another menu, these are placed in order listed in your configuration.
+
+** Usage
+
+Enter
+
+:  <menu-directive menus="menus" location-to-menu="locationToMenu"></menu-directive>
+
+Where menus and locationToMenu were defined in your main controller, refer to configuration.
+
