@@ -28,6 +28,7 @@ HelmsmanController = ["$scope", function($scope){
     if($scope.menus && $scope.locationToMenu){
         // Set the active menu
         $scope.setMenu = function(menu){
+            $scope.heading = menu
             $scope.items = $scope.menus[menu]
         }
 
