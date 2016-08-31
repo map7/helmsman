@@ -20,6 +20,8 @@ Helmsman is a menu system which scales up for large applications complete with b
 
 ** Config
 
+Make sure you include angularjs, ui.router, angular-hotkeys and helmsman in your project.
+
 Add the following to your AngularJS app
 : angular.module('app',['ui.router', 'angular-hotkeys', 'helmsman'])
 
