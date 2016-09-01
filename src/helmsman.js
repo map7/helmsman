@@ -59,9 +59,12 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             callback: function(e) {
                 if(menu[item-1]){
                     if(menu[item-1]["state"]){
+                        // Use angular ui-router to direct the content to a state
                         $state.go(menu[item-1]["state"]);
                     }
                     if(menu[item-1]["link"]){
+                        // Change the menu system
+                        // This has to be last in the callback otherwise it interupts the flow.
                         $scope.setMenu(menu[item-1]["link"]);
                     }
                 }
