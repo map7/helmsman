@@ -46,12 +46,35 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         return slimMenu;
     }
 
+    // Find the previous menu from the breadcrumbs
+    previousMenu = function(){
+        prev = 'main'
+        $scope.items.forEach(function(item,index){
+            if(item["breadcrumb"]){
+                prev = item["breadcrumb"];
+            }
+        });
+        return prev;
+    }
+
     // Set shortcut for all the menu items.
     setShortcut = function(item,index) {
         menu=menuWithoutBreadcrumbs($scope.items);
 
+        // Add ESC button to go to the previous menu
+        hotkeys.del('esc');
+        hotkeys.add({
+            combo: 'esc',
+            description: "",
+            allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+            callback: function(e) {
+                $scope.setMenu(previousMenu());
+                e.preventDefault();
+            }            
+        })
+
+        // Add function key navigation keys
         hotkeys.del('f' + item);
-        
         hotkeys.add({
             combo: 'f' +  item,
             description: "",
@@ -72,6 +95,8 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             }
         });    
     }
+
+    
     
     // Check menus exist
     if($scope.menus && $scope.locationToMenu){
