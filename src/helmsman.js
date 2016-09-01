@@ -3,7 +3,7 @@ angular.module('helmsman', [])
 
 // Get script path
 scriptPath = document.scripts[document.scripts.length-1].src
-templatePath=(scriptPath).replace("helmsman.js","helmsman.html")
+templatePath=(scriptPath).replace("helmsman.js","../templates/helmsman.html")
 
 // Directive
 menuDirective = function(){
