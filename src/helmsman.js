@@ -64,10 +64,10 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         setBackShortcut('esc')
         setBackShortcut('ctrl+-')
         setNavShortcut('f'+item,item, menu);
-        if(item-1 == 0){
+        if(item == 10){
             key = "ctrl+0"
         }else{
-            key="ctrl+" + (item - 1)
+            key="ctrl+" + item
         }
         setNavShortcut(key,item, menu);
     }
