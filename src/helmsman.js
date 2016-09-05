@@ -61,10 +61,20 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     setShortcut = function(item,index) {
         menu=menuWithoutBreadcrumbs($scope.items);
 
-        // Add ESC button to go to the previous menu
-        hotkeys.del('esc');
+        setBackShortcut('esc')
+        setBackShortcut('ctrl+-')
+        setNavShortcut('f'+item,item, menu);
+        if(item-1 == 0){
+            key = "ctrl+0"
+        }else{
+            key="ctrl+" + (item - 1)
+        }
+        setNavShortcut(key,item, menu);
+    }
+
+    setBackShortcut = function(key){
         hotkeys.add({
-            combo: 'esc',
+            combo: key,
             description: "",
             allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
             callback: function(e) {
@@ -72,11 +82,12 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
                 e.preventDefault();
             }            
         })
+    }
 
+    setNavShortcut = function(key,item,menu){
         // Add function key navigation keys
-        hotkeys.del('f' + item);
         hotkeys.add({
-            combo: 'f' +  item,
+            combo: key,
             description: "",
             allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
             callback: function(e) {
@@ -93,9 +104,8 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
                 }
                 e.preventDefault();
             }
-        });    
+        });            
     }
-
     
     
     // Check menus exist

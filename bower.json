@@ -20,7 +20,8 @@
   ],
   "version": "0.1.6",
   "dependencies": {
-    "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0"
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0",
+    "mousetrap": "mousetrap-js/mousetrap#^1.7.0"
   },
   "devDependencies": {}
 }
