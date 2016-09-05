@@ -8,7 +8,7 @@ angular.module('helmsman').run(function ($rootScope, $state, $stateParams) {
 
 // Get script path
 scriptPath = document.scripts[document.scripts.length-1].src
-templatePath=(scriptPath).replace("helmsman.js","../templates/helmsman.html")
+templatePath=(scriptPath).replace("src/helmsman.js","templates/helmsman.html")
 
 // Directive
 menuDirective = function(){
