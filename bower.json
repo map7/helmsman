@@ -18,7 +18,7 @@
     "test",
     "tests"
   ],
-  "version": "0.1.4",
+  "version": "0.1.5",
   "dependencies": {
     "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0"
   },
