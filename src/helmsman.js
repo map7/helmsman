@@ -72,6 +72,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         setNavShortcut(key,item, menu);
     }
 
+    // Setup the shortcut keys for the back function.
     setBackShortcut = function(key){
         hotkeys.add({
             combo: key,
