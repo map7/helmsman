@@ -11,5 +11,11 @@ gulp.task('scripts', function() {
       .pipe(gulp.dest('build'));
 });
 
+// Copy html files
+gulp.task('html', function() {
+    return gulp.src(['src/*.html'])
+      .pipe(gulp.dest('build'));
+});
+
 // Default Task
-gulp.task('default', ['scripts']);
+gulp.task('default', ['scripts', 'html']);
