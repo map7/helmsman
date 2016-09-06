@@ -31,10 +31,6 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     // Add shortcut keys for navigation using function keys
     setShortcuts = function(menu){
         [1,2,3,4,5,6,7,8,9,10,11,12].forEach(setShortcut);
-
-        // $scope.items.forEach(function(item,index){
-        //     item["key"] = "ctrl+" + item;
-        // });
     }
 
     // Return menu without breadcrumbs
@@ -82,17 +78,30 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
 
     // Setup the shortcut keys for the back function.
     setBackShortcut = function(key){
-        setKeyLabel(key,previousMenu());
-
-        hotkeys.add({
-            combo: key,
-            description: "",
-            allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-            callback: function(e) {
-                $scope.setMenu(previousMenu()["breadcrumb"]);
-                e.preventDefault();
-            }            
-        });
+        if(previousMenu()["breadcrumb"]){
+            setKeyLabel(key,previousMenu());
+            
+            hotkeys.add({
+                combo: key,
+                description: "",
+                allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+                callback: function(e) {
+                    $scope.setMenu(previousMenu()["breadcrumb"]);
+                    e.preventDefault();
+                }            
+            });
+        }else{
+            // No more back
+            hotkeys.add({
+                combo: key,
+                description: "",
+                allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+                callback: function(e) {
+                    console.log("Top Level Menu");
+                    e.preventDefault();
+                }            
+            });
+        }
     }
 
     // Add function key navigation keys
