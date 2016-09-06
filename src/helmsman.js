@@ -41,7 +41,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             if(item["breadcrumb"] == undefined){
                 slimMenu.push(item);
             }
-        })
+        });
         
         return slimMenu;
     }
@@ -49,6 +49,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     // Find the previous menu from the breadcrumbs
     previousMenu = function(){
         prev = 'main'
+
         $scope.items.forEach(function(item,index){
             if(item["breadcrumb"]){
                 prev = item["breadcrumb"];
@@ -82,11 +83,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
                 $scope.setMenu(previousMenu());
                 e.preventDefault();
             }            
-        })
+        });
     }
 
+    // Add function key navigation keys
     setNavShortcut = function(key,item,menu){
-        // Add function key navigation keys
         hotkeys.add({
             combo: key,
             description: "",
@@ -107,7 +108,6 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             }
         });            
     }
-    
     
     // Check menus exist
     if($scope.menus && $scope.locationToMenu){
