@@ -1814,7 +1814,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             if(item["breadcrumb"] == undefined){
                 slimMenu.push(item);
             }
-        })
+        });
         
         return slimMenu;
     }
@@ -1822,9 +1822,10 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     // Find the previous menu from the breadcrumbs
     previousMenu = function(){
         prev = 'main'
+
         $scope.items.forEach(function(item,index){
             if(item["breadcrumb"]){
-                prev = item["breadcrumb"];
+                prev = item;
             }
         });
         return prev;
@@ -1834,31 +1835,52 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     setShortcut = function(item,index) {
         menu=menuWithoutBreadcrumbs($scope.items);
 
-        setBackShortcut('esc')
+        // Set shortcuts for the back one level menu item
+        setBackShortcut('ctrl+esc')
         setBackShortcut('ctrl+-')
+
+        // Set navigation shortcuts with function keys
         setNavShortcut('f'+item,item, menu);
-        if(item-1 == 0){
+        if(item == 10){
             key = "ctrl+0"
         }else{
-            key="ctrl+" + (item - 1)
+            key="ctrl+" + item
         }
         setNavShortcut(key,item, menu);
     }
 
+    // Setup the shortcut keys for the back function.
     setBackShortcut = function(key){
-        hotkeys.add({
-            combo: key,
-            description: "",
-            allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-            callback: function(e) {
-                $scope.setMenu(previousMenu());
-                e.preventDefault();
-            }            
-        })
+        if(previousMenu()["breadcrumb"]){
+            setKeyLabel(key,previousMenu());
+            
+            hotkeys.add({
+                combo: key,
+                description: "",
+                allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+                callback: function(e) {
+                    $scope.setMenu(previousMenu()["breadcrumb"]);
+                    e.preventDefault();
+                }            
+            });
+        }else{
+            // No more back
+            hotkeys.add({
+                combo: key,
+                description: "",
+                allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+                callback: function(e) {
+                    console.log("Top Level Menu");
+                    e.preventDefault();
+                }            
+            });
+        }
     }
 
+    // Add function key navigation keys
     setNavShortcut = function(key,item,menu){
-        // Add function key navigation keys
+        setKeyLabel(key,menu[item-1]);
+        
         hotkeys.add({
             combo: key,
             description: "",
@@ -1879,7 +1901,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             }
         });            
     }
-    
+
+    // Set the key label
+    setKeyLabel = function(key,menu){
+        if(menu){ menu["key"] = key; }
+    }
     
     // Check menus exist
     if($scope.menus && $scope.locationToMenu){
