@@ -4,7 +4,7 @@
     "Michael Pope <michael@dtcorp.com.au>"
   ],
   "description": "AngularJS multi layer menu system",
-  "main": "src/helmsman.js",
+  "main": "build/helmsman.js",
   "keywords": [
     "menu"
   ],
