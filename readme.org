@@ -11,8 +11,9 @@ Helmsman is a menu system which scales up for large applications complete with b
 
 ** Requirements
 
-| [[https://github.com/angular-ui/ui-router][ui-router]]       | required               |
-| [[http://chieffancypants.github.io/angular-hotkeys/][angular-hotkeys]] | optional for shortcuts |
+| [[https://github.com/angular-ui/ui-router][ui-router]]       | Required               |
+| [[http://chieffancypants.github.io/angular-hotkeys/][angular-hotkeys]] | Optional for shortcuts |
+| mousetrap       | Shortcuts base library |
 
 ** Installation
 
