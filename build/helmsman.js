@@ -1887,6 +1887,8 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         });            
     }
 
+    
+
     // Set the key label
     setKeyLabel = function(key,menu){
         if(menu){ menu["key"] = key; }
