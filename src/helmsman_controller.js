@@ -100,7 +100,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             }
         });            
     }
-
+ 
     // On refresh find the corresponding menu to the page.
     setPageMenu = function(){
         if($scope.locationToMenu[location.hash]) {

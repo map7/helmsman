@@ -1886,8 +1886,15 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             }
         });            
     }
-
-    
+ 
+    // On refresh find the corresponding menu to the page.
+    setPageMenu = function(){
+        if($scope.locationToMenu[location.hash]) {
+            $scope.setMenu($scope.locationToMenu[location.hash])
+        }else{
+            $scope.setMenu("main")
+        }
+    }
 
     // Set the key label
     setKeyLabel = function(key,menu){
@@ -1904,12 +1911,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             setShortcuts()
         }
 
-        // On refresh find the corresponding menu to the page.
-        if($scope.locationToMenu[location.hash]) {
-            $scope.setMenu($scope.locationToMenu[location.hash])
-        }else{
-            $scope.setMenu("main")
-        }
+        setPageMenu();
     }
 }];
 
