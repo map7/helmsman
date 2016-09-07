@@ -7,16 +7,18 @@ var concat = require('gulp-concat');
 
 // Concatenate JS Files
 gulp.task('scripts', function() {
-    return watch(['app/bower_components/mousetrap/mousetrap.js',
-                     'app/bower_components/angular-hotkeys/src/hotkeys.js',
-                  'src/*.js'], {ignoreInitial: false})
-      .pipe(concat('helmsman.js'))
-      .pipe(gulp.dest('build'));
+    return watch('src/*.js', function(){
+        gulp.src(['app/bower_components/mousetrap/mousetrap.js',
+                  'app/bower_components/angular-hotkeys/src/hotkeys.js',
+                  'src/*.js'])
+            .pipe(concat('helmsman.js'))
+            .pipe(gulp.dest('build'));  
+    });
 });
 
 // Copy html files
 gulp.task('html', function() {
-    return watch('src/*.html', {ignoreInitial: false})
+    return watch('src/*.html')
       .pipe(gulp.dest('build'));
 });
 
