@@ -2,7 +2,7 @@
 HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, hotkeys){
     // Add shortcut keys for navigation using function keys
     setShortcuts = function(menu){
-        [1,2,3,4,5,6,7,8,9,10,11,12].forEach(setShortcut);
+        [1,2,3,4,5,6,7,8,9,10].forEach(setShortcut);
     }
 
     // Return menu without breadcrumbs
