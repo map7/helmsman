@@ -1783,21 +1783,6 @@ angular.module('helmsman').run(function ($rootScope, $state, $stateParams) {
 scriptPath = document.scripts[document.scripts.length-1].src
 templatePath=(scriptPath).replace("helmsman.js","helmsman.html")
 
-// Directive
-menuDirective = function(){
-    return {
-        restrict: 'E',
-        replace: true,
-        scope: {
-            menus: '=',
-            locationToMenu: '='
-        },
-        templateUrl: templatePath,
-        controller: HelmsmanController
-    }
-};
-
-angular.module('helmsman').directive('menuDirective', menuDirective)
 
 // Controller
 HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, hotkeys){
@@ -1927,3 +1912,19 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
 }];
 
 angular.module('helmsman').controller('HelmsmanController', HelmsmanController)
+
+// Directive
+helmsmanDirective = function(){
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: {
+            menus: '=',
+            locationToMenu: '='
+        },
+        templateUrl: templatePath,
+        controller: HelmsmanController
+    }
+};
+
+angular.module('helmsman').directive('helmsmanDirective', helmsmanDirective)
