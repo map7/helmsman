@@ -18,50 +18,63 @@ Helmsman is a menu system which scales up for large applications complete with b
 
 : bower install helmsman
 
+Also available in rails-assets just add the following to your Gemfile
+
+: gem 'rails-assets-helmsman'
+
 ** Config
 
-Make sure you include angularjs, ui.router, angular-hotkeys and helmsman in your project.
+1. Make sure you include angularjs, ui.router, angular-hotkeys and helmsman in your project like so;
+   : // Angular
+   : //= require angular
+   : //= require angular-ui-router
+   : //= require helmsman
 
-Add the following to your AngularJS app
-: angular.module('app',['ui.router', 'angular-hotkeys'])
+   Note: helmsman build includes angular-hotkeys and mousetrap for shortcut keys.
 
-Define your menu in your main controller.
+2. Add the following to your AngularJS app
+   : angular.module('app',['ui.router', 'helmsman'])
 
-*Require the helmsman.js from the build directory only (as this includes the dependencies)*
+3. Create a main controller for your base angularjs template
+   Example: Here I use a home controller in my default.html angularjs template file.
+   : <div ng-controller="HomeController">
+   :   <menu-directive menus="menus" location-to-menu="locationToMenu"></menu-directive>
+   :   <div id="wrapper" ui-view=""></div>
+   : </div>
 
-Basic example one level menu
-:     $scope.menus = {
-:         main: [
-:             {label: "Home",  state: "home"},
-:             {label: "Blog",  state: "blogs"},
-:             {label: "Contact Us",  state: "contactus"},
-:             {label: "About Us",  state: "aboutus"}
-:         ]
-:     }
+4. Define your menu in your home controller.
 
+   Basic example one level menu
+   :     $scope.menus = {
+   :         main: [
+   :             {label: "Home",  state: "home"},
+   :             {label: "Blog",  state: "blogs"},
+   :             {label: "Contact Us",  state: "contactus"},
+   :             {label: "About Us",  state: "aboutus"}
+   :         ]
+   :     }
 
-
-Full example with three levels.
-:     $scope.menus = {
-:         main: [
-:             {label: "Costings Menu...",  link: "costings"},
-:             {label: "Settings Menu...",  link: "settings"}
-:         ],
-:         costings:  [
-:             {label: "Main",      breadcrumb: "main"},
-:             {label: "Invoices",  state: "invoices"}
-:         ],
-:         settings:  [
-:             {label: "Main",      breadcrumb: "main"},
-:             {label: "Accounting Menu...",link: "settings_accounting"},
-:             {label: "Account",   state: "account"}
-:         ],
-:         settings_accounting: [
-:             {label: "Main",      breadcrumb: "main"},
-:             {label: "Settings",  breadcrumb: "settings"},
-:             {label: "Profile",   state: "profile"}
-:         ]
-:     }
+   Full example with three levels.
+   :     $scope.menus = {
+   :         main: [
+   :             {label: "Costings Menu...",  link: "costings"},
+   :             {label: "Settings Menu...",  link: "settings"}
+   :         ],
+   :         costings:  [
+   :             {label: "Main",      breadcrumb: "main"},
+   :             {label: "Invoices",  state: "invoices"}
+   :         ],
+   :         settings:  [
+   :             {label: "Main",      breadcrumb: "main"},
+   :             {label: "Accounting Menu...",link: "settings_accounting"},
+   :             {label: "Account",   state: "account"}
+   :         ],
+   :         settings_accounting: [
+   :             {label: "Main",      breadcrumb: "main"},
+   :             {label: "Settings",  breadcrumb: "settings"},
+   :             {label: "Profile",   state: "profile"}
+   :         ]
+   :     }
 
 *** States
 
@@ -75,6 +88,9 @@ Link to another menu system
 
 These are at the top and allows you to step back to another menu, these are placed in order listed in your configuration.
 
+** Shortcut keys
+
+Shortcut keys are dynamically applied. These are ctrl+1 to ctrl+9 for the menu items 1 to 9 and ctrl+- for going to the previous menu. These are displayed next to the menu item and can be hidden and changed via the helmsman-key class.
 ** Usage
 
 Enter
@@ -82,4 +98,14 @@ Enter
 :  <menu-directive menus="menus" location-to-menu="locationToMenu"></menu-directive>
 
 Where menus and locationToMenu were defined in your main controller, refer to configuration.
+
+** Styling
+
+All classes are namespaced with helmsman
+
+| helmsman-breadcrumb     | Previous menu area                     |
+| helmsman-breadcrumb-key | The shortcut key for the previous menu |
+| helmsman-heading        | Current menu heading                   |
+| helmsman-menu           | Main menu area                         |
+| helmsman-key            | The shortcut key per menu item         |
 
