@@ -110,6 +110,26 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         }
     }
 
+    // Given a state eg: 'invoices' return the parent.
+    function find_state_menu(state) {
+
+        // Step through a hash of sub menus
+        for(parent in $scope.menus){
+            result = find_parent($scope.menus[parent], state) // Look for parent
+            if(result) return parent      // Return the parent menu name
+        }
+    }
+
+    // Given a state eg: 'invoices' return true if we have found the menu
+    function find_parent(menu, state){
+
+        // Step through an array of hashes
+        for (var i = 0; i < menu.length; i ++) {
+            if(menu[i].state === state) return true; // If we find the state return true
+        }
+        return null;       // Return null if we haven't found anything
+    }
+    
     // Set the key label
     setKeyLabel = function(key,menu){
         if(menu){ menu["key"] = key; }

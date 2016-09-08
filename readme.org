@@ -110,3 +110,7 @@ All classes are namespaced with helmsman
 | helmsman-menu           | Main menu area                         |
 | helmsman-key            | The shortcut key per menu item         |
 
+** TODO
+
+- [ ] Abolish the need for locationToMenu
+  We should be able to look up the state and do a reverse lookup using the hash
