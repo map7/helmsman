@@ -1893,7 +1893,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         guess_state = location.hash.slice(2);
 
         // Use the locationToMenu table
-        if($scope.locationToMenu[loc]) {
+        if($scope.locationToMenu && $scope.locationToMenu[loc]) {
             $scope.setMenu($scope.locationToMenu[loc])
 
         }else if(find_state_menu(guess_state) != null){
@@ -1931,7 +1931,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     }
     
     // Check menus exist
-    if($scope.menus && $scope.locationToMenu){
+    if($scope.menus){
         
         // Set the active menu
         $scope.setMenu = function(menu){
