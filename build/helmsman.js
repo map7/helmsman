@@ -1889,9 +1889,18 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
  
     // On refresh find the corresponding menu to the page.
     setPageMenu = function(){
-        if($scope.locationToMenu[location.hash]) {
-            $scope.setMenu($scope.locationToMenu[location.hash])
+        loc=location.hash;
+        guess_state = location.hash.slice(2);
+
+        // Use the locationToMenu table
+        if($scope.locationToMenu[loc]) {
+            $scope.setMenu($scope.locationToMenu[loc])
+
+        }else if(find_state_menu(guess_state) != null){
+            // Try and guess using the location href and assuming this is the same as state
+            $scope.setMenu(find_state_menu(guess_state));
         }else{
+            // Cannot find, just use main
             $scope.setMenu("main")
         }
     }
