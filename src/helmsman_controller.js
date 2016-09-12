@@ -53,7 +53,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             
             hotkeys.add({
                 combo: key,
-                description: "",
+                description: "Previous Menu",
                 allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
                 callback: function(e) {
                     $scope.setMenu(previousMenu()["breadcrumb"]);
@@ -64,7 +64,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
             // No more back
             hotkeys.add({
                 combo: key,
-                description: "",
+                description: "Previous Menu",
                 allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
                 callback: function(e) {
                     console.log("Top Level Menu");
@@ -74,13 +74,21 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         }
     }
 
-    // Add function key navigation keys
+    // Add navigation keys
     setNavShortcut = function(key,item,menu){
         setKeyLabel(key,menu[item-1]);
+
+        if(menu[item-1]){
+            label = "Navigate to " + menu[item-1]["label"];
+            
+        }else{
+            label = "$$undefined$$";
+        }
+            
         
         hotkeys.add({
             combo: key,
-            description: "",
+            description: label,
             allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
             callback: function(e) {
                 if(menu[item-1]){
