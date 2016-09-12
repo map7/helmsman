@@ -35,11 +35,9 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         menu=menuWithoutBreadcrumbs($scope.items);
 
         // Set shortcuts for the back one level menu item
-        setBackShortcut('ctrl+esc')
         setBackShortcut('ctrl+-')
 
         // Set navigation shortcuts with function keys
-        setNavShortcut('f'+item,item, menu);
         if(item == 10){
             key = "ctrl+0"
         }else{
