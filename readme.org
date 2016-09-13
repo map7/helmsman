@@ -15,6 +15,15 @@ Helmsman is a menu system which scales up for large applications complete with b
 | [[http://chieffancypants.github.io/angular-hotkeys/][angular-hotkeys]] | Optional for shortcuts |
 | mousetrap       | Shortcuts base library |
 
+** Example
+
+Running the example
+
+: npm install
+: httpster
+
+Open up http://localhost:3333
+
 ** Installation
 
 : bower install helmsman
@@ -109,7 +118,6 @@ All classes are namespaced with helmsman
 | helmsman-heading        | Current menu heading                   |
 | helmsman-menu           | Main menu area                         |
 | helmsman-key            | The shortcut key per menu item         |
-
 ** TODO
 
 - [ ] Abolish the need for locationToMenu
