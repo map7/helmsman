@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html ng-app="app" ng-controller='home'>
+  <head>
+    <!-- Load dependencies -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- Menu System module -->
+    <script src="app/bower_components/mousetrap/mousetrap.js"></script>
+    <script src="app/bower_components/angular-hotkeys/src/hotkeys.js"></script>
+    <script src="src/helmsman.js"></script>
+    <script src="src/helmsman_directive.js"></script>
+    <script src="src/helmsman_controller.js"></script>
+
+    <!-- Load the main program -->
+    <script src="js/app.js"></script>
+    
+    <!-- Load directives -->
+    <script src="js/directives/focus-me.js"></script>
+
+    <!-- Load controllers -->
+    <script src="js/controllers/home_controller.js"></script>
+    <script src="js/controllers/account_controller.js"></script>
+
+    <!-- Load services -->
+    <script src="js/services/ledger_service.js"></script>
+
+    <!-- Load routes -->
+    <script src="js/routes/settings_route.js"></script>
+    <script src="js/routes/costings_route.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <div class="header">
+    <span>Index level</span>
+    <span>Ledger: {{ledgerService.getLedger()}}</span>
+  </div>
+
+  $state = {{$state.current.name}}
+  $stateParams = {{$stateParams}}
+  $state full url = {{ $state.$current.url.source }}
+  
+  <helmsman-directive menus="menus" location-to-menu="locationToMenu"></helmsman-directive>
+
+  <div ui-view class="content"></div>
+</html>
+
