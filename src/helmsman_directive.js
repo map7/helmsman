@@ -22,7 +22,7 @@ helmsmanDirective = function(){
       '<a ui-sref="{{item.state}}" ng-if="item.state">{{item.label}}</a>' + 
     '</li>' + 
   '</div>' + 
-'</div>',
+'</div>', 
         controller: HelmsmanController
     }
 };
