@@ -30,11 +30,23 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         return prev;
     }
 
+    // Find root menu from the breadcrumbs
+    rootMenu = function(){
+        prev = 'main'
+
+        $scope.items.forEach(function(item,index){
+            if(item["breadcrumb"]){
+                return item;
+            }
+        });
+    }
+
     // Set shortcut for all the menu items.
     setShortcut = function(item,index) {
         menu=menuWithoutBreadcrumbs($scope.items);
 
         // Set shortcuts for the back one level menu item
+        $scope.helmsman_back_shortcut = "ctrl -"
         setBackShortcut('ctrl+-')
 
         // Set navigation shortcuts with function keys
@@ -49,8 +61,6 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     // Setup the shortcut keys for the back function.
     setBackShortcut = function(key){
         if(previousMenu()["breadcrumb"]){
-            setKeyLabel(key,previousMenu());
-            
             hotkeys.add({
                 combo: key,
                 description: "Previous Menu",
