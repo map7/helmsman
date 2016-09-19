@@ -16,10 +16,22 @@ helmsmanDirective = function(){
   '</div>' + 
   '<div class="helmsman-menu">' + 
     '<div class="helmsman-heading" ng-if="heading">{{heading}}</div>' + 
-    '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' + 
-      '<span class="helmsman-key">{{item.key}}</span>' + 
-      '<a href="" ng-click="setMenu(item.link)" ng-if="item.link">{{item.label}}</a>' + 
-      '<a ui-sref="{{item.state}}" ng-if="item.state">{{item.label}}</a>' + 
+      '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' +
+        // Link
+        '<a href="" ng-click="setMenu(item.link)" ng-if="item.link">' +
+          '<div class=helmsman-link>' +
+            '<span class="helmsman-key">{{item.key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
+
+        // Item
+        '<a ui-sref="{{item.state}}" ng-if="item.state">' + 
+          '<div class=helmsman-item>' +
+            '<span class="helmsman-key">{{item.key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
     '</li>' + 
   '</div>' + 
 '</div>', 
