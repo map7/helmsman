@@ -26,7 +26,7 @@ helmsmanDirective = function(){
         '</a>' +
 
         // Item
-        '<a ui-sref="{{item.state}}" ng-if="item.state">' + 
+        '<a ui-sref="{{item.state}}" ui-sref-active="helmsman-active-item" ng-if="item.state">' + 
           '<div class=helmsman-item>' +
             '<span class="helmsman-key">{{item.key}}</span>' + 
             '{{item.label}}' +
