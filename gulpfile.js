@@ -9,7 +9,7 @@ var concat = require('gulp-concat');
 gulp.task('scripts', function() {
     return watch('src/*.js', function(){
         gulp.src(['app/bower_components/mousetrap/mousetrap.js',
-                  'app/bower_components/angular-hotkeys/src/hotkeys.js',
+                  'app/bower_components/angular-hotkeys/build/hotkeys.js',
                   'src/*.js'])
             .pipe(concat('helmsman.js'))
             .pipe(gulp.dest('build'));  
