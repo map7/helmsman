@@ -9,10 +9,12 @@
     background: black;
     color: white;
 }
+
 .helmsman-breadcrumb a {
     text-decoration: none;
     color: white;
 }
+
 .helmsman-menu {
     float: left;
     width: 250px;
@@ -30,9 +32,18 @@
     list-style: none;
     margin-bottom: 5px;
 }
+
 .helmsman-menu a{
     text-decoration: none;
-    color: black;
+}
+
+.helmsman-menu-missing a{
+    text-decoration: none;
+    color: red;
+}
+
+.helmsman_item {
+  color: white;
 }
 
 .helmsman-heading {
