@@ -37,13 +37,12 @@
     text-decoration: none;
 }
 
-.helmsman-menu-missing a{
-    text-decoration: none;
-    color: red;
-}
-
 .helmsman_item {
   color: white;
+}
+
+.helmsman_missing_item {
+  color: red;
 }
 
 .helmsman-heading {
