@@ -111,6 +111,12 @@ Use bower and push to repository
 - Run bower to apply the tag
   : bower version 0.3.3
 
+Push master branch and tags
+
+Now go to rails-assets.org and add
+| Name    | helmsman |
+| Version | v0.3.3   |
+
 ** Shortcut keys
 
 Shortcut keys are dynamically applied. These are ctrl+1 to ctrl+9 for the menu items 1 to 9 and ctrl+- for going to the previous menu. These are displayed next to the menu item and can be hidden and changed via the helmsman-key class.
