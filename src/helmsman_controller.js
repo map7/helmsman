@@ -169,10 +169,16 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         
         // Set the active menu
         $scope.setMenu = function(menu){
-            $scope.heading = menu
-            $scope.items = $scope.menus[menu]
-            setShortcuts()
+          $scope.heading = menu
+          $scope.items = $scope.menus[menu]
+          setShortcuts()
+
+          // Add if the state exists to the hash
+          $scope.items.forEach(function(item,index){
+            item['exists'] = $state.is(item['state'])
+          })
         }
+      
 
         setPageMenu();
     }
