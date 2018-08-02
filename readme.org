@@ -19,6 +19,7 @@ Helmsman is a menu system which scales up for large applications complete with b
 
 Running the example
 
+: cd example
 : npm install
 : httpster
 
