@@ -2983,10 +2983,16 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         
         // Set the active menu
         $scope.setMenu = function(menu){
-            $scope.heading = menu
-            $scope.items = $scope.menus[menu]
-            setShortcuts()
+          $scope.heading = menu
+          $scope.items = $scope.menus[menu]
+          setShortcuts()
+
+          // Add if the state exists to the hash
+          $scope.items.forEach(function(item,index){
+            item['exists'] = $state.is(item['state'])
+          })
         }
+      
 
         setPageMenu();
     }
@@ -3022,8 +3028,11 @@ helmsmanDirective = function(){
         '</a>' +
 
         // Item
-        '<a ui-sref="{{item.state}}" ui-sref-active="helmsman-active-item" ng-if="item.state">' + 
-          '<div class=helmsman-item>' +
+        '<a ui-sref="{{item.state}}" \
+            ui-sref-active="helmsman-active-item" \
+            ng-if="item.state">' +
+        
+          '<div ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
             '<span class="helmsman-key">{{item.key}}</span>' + 
             '{{item.label}}' +
           '</div>' +

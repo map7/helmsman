@@ -99,6 +99,15 @@ Link to another menu system
 
 These are at the top and allows you to step back to another menu, these are placed in order listed in your configuration.
 
+** Update
+
+Run gulp and create build file
+: gulp
+<edit the helmsman file to trigger>
+
+Use bower and push to repository
+: bower version <new version>
+
 ** Shortcut keys
 
 Shortcut keys are dynamically applied. These are ctrl+1 to ctrl+9 for the menu items 1 to 9 and ctrl+- for going to the previous menu. These are displayed next to the menu item and can be hidden and changed via the helmsman-key class.
