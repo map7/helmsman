@@ -106,7 +106,10 @@ Run gulp and create build file
 <edit the helmsman file to trigger>
 
 Use bower and push to repository
-: bower version <new version>
+- Edit bower.json manually change to new version eg: 0.3.3
+- Commit
+- Run bower to apply the tag
+  : bower version 0.3.3
 
 ** Shortcut keys
 
