@@ -3016,7 +3016,7 @@ helmsmanDirective = function(){
     '<div class="helmsman-heading" ng-if="heading">{{heading}}</div>' + 
       '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' +
         // Link
-        '<a href="" ng-click="setMenu(item.link)" ng-if="item.link">' +
+        '<a id="{{item.link}}_menu_link" href="" ng-click="setMenu(item.link)" ng-if="item.link">' +
           '<div class=helmsman-link>' +
             '<span class="helmsman-key">{{item.key}}</span>' + 
             '{{item.label}}' +
@@ -3028,7 +3028,7 @@ helmsmanDirective = function(){
             ui-sref-active="helmsman-active-item" \
             ng-if="item.state">' +
         
-          '<div ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
+          '<div id="{{item.state}}_menu_item" ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
             '<span class="helmsman-key">{{item.key}}</span>' + 
             '{{item.label}}' +
           '</div>' +
