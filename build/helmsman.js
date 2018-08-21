@@ -2861,18 +2861,14 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
 
         // Set shortcuts for the back one level menu item
         if(previousMenu()["breadcrumb"]){
-            $scope.helmsman_back_shortcut = "ctrl+-"
+            $scope.helmsman_back_shortcut = "esc"
         }else{
             $scope.helmsman_back_shortcut = ""
         }
-        setBackShortcut('ctrl+-')
+        setBackShortcut('esc')
 
         // Set navigation shortcuts with function keys
-        if(item == 10){
-            key = "ctrl+0"
-        }else{
-            key="ctrl+" + item
-        }
+        key="f" + item
         setNavShortcut(key,item, menu);
     }
 
