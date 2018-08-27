@@ -2880,7 +2880,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         description: "Previous Menu",
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
         callback: function(e) {
-          $scope.setMenu(previousMenu()["breadcrumb"]);
+          if(angular.element(document.getElementById("listing-btn")).length > 0){
+            angular.element(document.getElementById("listing-btn")).click()
+          } else {
+            $scope.setMenu(previousMenu()["breadcrumb"]);
+          }          
           e.preventDefault();
         }            
       });
