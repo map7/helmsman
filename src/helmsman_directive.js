@@ -11,14 +11,23 @@ helmsmanDirective = function(){
   '<div class="helmsman-breadcrumb">' +
     '<span class="helmsman-breadcrumb-key">{{helmsman_back_shortcut}}</span>' +
     '<span ng-repeat="item in items" ng-if="item.breadcrumb">' +
-      '<a href="" ng-click="setMenu(item.breadcrumb)" ng-if="item.breadcrumb">{{item.label}}</a> >' + 
+      '<a href="" \
+          tabIndex="-1" \
+          ng-click="setMenu(item.breadcrumb)" \
+          ng-if="item.breadcrumb">{{item.label}}</a> >' +
+        
     '</span>' + 
   '</div>' + 
   '<div class="helmsman-menu">' + 
     '<div class="helmsman-heading" ng-if="heading">{{heading}}</div>' + 
       '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' +
+
         // Link
-        '<a id="{{item.link}}_menu_link" href="" ng-click="setMenu(item.link)" ng-if="item.link">' +
+        '<a id="{{item.link}}_menu_link" \
+            href="" ng-click="setMenu(item.link)" \
+            tabIndex="-1" \
+            ng-if="item.link">' +
+        
           '<div class=helmsman-link>' +
             '<span class="helmsman-key">{{item.key}}</span>' + 
             '{{item.label}}' +
@@ -26,7 +35,8 @@ helmsmanDirective = function(){
         '</a>' +
 
         // Item
-        '<a ui-sref="{{item.state}}" \
+        '<a tabIndex="-1" \
+            ui-sref="{{item.state}}" \
             ui-sref-active="helmsman-active-item" \
             ng-if="item.state">' +
         
