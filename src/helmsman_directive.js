@@ -49,7 +49,28 @@ helmsmanDirective = function(){
       '</a>' +
 
     '</li>' + 
-  '</div>' + 
+
+    '<div ng-if="jumps">' +
+      '<div class="helmsman-heading" ng-if="heading">Jump Menu</div>' + 
+      '<li ng-repeat="item in jumps" ng-if="item.link">' +
+
+        // Jump
+        '<a id="{{item.link}}_menu_link" \
+            href="" ng-click="setMenu(item.link)" \
+            tabIndex="-1" \
+            ng-if="item.link">' +
+
+          '<div class=helmsman-link>' +
+            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
+
+      '</li>' +
+        
+    '</div>' +
+  '</div>' +
+
 '</div>', 
         controller: HelmsmanController
     }
