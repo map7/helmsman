@@ -18,33 +18,35 @@ helmsmanDirective = function(){
         
     '</span>' + 
   '</div>' + 
+
   '<div class="helmsman-menu">' + 
     '<div class="helmsman-heading" ng-if="heading">{{heading}}</div>' + 
-      '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' +
+    '<li ng-repeat="item in items" ng-if="!item.breadcrumb">' +
 
-        // Link
-        '<a id="{{item.link}}_menu_link" \
-            href="" ng-click="setMenu(item.link)" \
-            tabIndex="-1" \
-            ng-if="item.link">' +
-        
-          '<div class=helmsman-link>' +
-            '<span class="helmsman-key">{{item.key}}</span>' + 
-            '{{item.label}}' +
-          '</div>' +
-        '</a>' +
+      // Link
+      '<a id="{{item.link}}_menu_link" \
+          href="" ng-click="setMenu(item.link)" \
+          tabIndex="-1" \
+          ng-if="item.link">' +
 
-        // Item
-        '<a tabIndex="-1" \
-            ui-sref="{{item.state}}" \
-            ui-sref-active="helmsman-active-item" \
-            ng-if="item.state">' +
-        
-          '<div id="{{item.state}}_menu_item" ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
-            '<span class="helmsman-key">{{item.key}}</span>' + 
-            '{{item.label}}' +
-          '</div>' +
-        '</a>' +
+        '<div class=helmsman-link>' +
+          '<span class="helmsman-key">{{item.key}}</span>' + 
+          '{{item.label}}' +
+        '</div>' +
+      '</a>' +
+
+      // Item
+      '<a tabIndex="-1" \
+          ui-sref="{{item.state}}" \
+          ui-sref-active="helmsman-active-item" \
+          ng-if="item.state">' +
+
+        '<div id="{{item.state}}_menu_item" ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
+          '<span class="helmsman-key">{{item.key}}</span>' + 
+          '{{item.label}}' +
+        '</div>' +
+      '</a>' +
+
     '</li>' + 
   '</div>' + 
 '</div>', 
