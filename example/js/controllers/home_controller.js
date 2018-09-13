@@ -48,6 +48,10 @@ home = ["$rootScope", "$scope", "$state", "$stateParams", "LedgerService", funct
     ]
   }
 
+  $scope.jumps = [
+    {label: "Settings Menu...", link: "Settings", jump_key: "Ctrl+f5"},    
+  ]
+  
   // // On the refresh
   // // page -> menu
   // $scope.locationToMenu = {
