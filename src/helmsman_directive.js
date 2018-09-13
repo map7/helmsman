@@ -36,7 +36,7 @@ helmsmanDirective = function(){
         '</div>' +
       '</a>' +
 
-      // Item
+      // State
       '<a tabIndex="-1" \
           ui-sref="{{item.state}}" \
           ui-sref-active="helmsman-active-item" \
@@ -52,9 +52,9 @@ helmsmanDirective = function(){
 
     '<div ng-if="jumps">' +
       '<div class="helmsman-heading" ng-if="heading">Jump Menu</div>' + 
-      '<li ng-repeat="item in jumps" ng-if="item.link">' +
+      '<li ng-repeat="item in jumps" ng-if="!item.breadcrumb">' +
 
-        // Jump
+        // Jump link
         '<a id="{{item.link}}_menu_link" \
             href="" ng-click="setMenu(item.link)" \
             tabIndex="-1" \
@@ -66,6 +66,18 @@ helmsmanDirective = function(){
           '</div>' +
         '</a>' +
 
+        // State
+        '<a tabIndex="-1" \
+            ui-sref="{{item.state}}" \
+            ui-sref-active="helmsman-active-item" \
+            ng-if="item.state">' +
+
+          '<div id="{{item.state}}_menu_item">' +
+            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
+      
       '</li>' +
         
     '</div>' +
