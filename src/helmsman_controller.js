@@ -3,7 +3,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
   // Add shortcut keys for navigation using function keys
   setShortcuts = function(menu){
     [1,2,3,4,5,6,7,8,9,10].forEach(setShortcut);
-  }
+  };
 
   // Return menu without breadcrumbs
   menuWithoutBreadcrumbs = function(menu){
@@ -16,11 +16,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     });
     
     return slimMenu;
-  }
+  };
 
   // Find the previous menu from the breadcrumbs
   previousMenu = function(){
-    prev = 'main'
+    prev = 'main';
 
     $scope.items.forEach(function(item,index){
       if(item["breadcrumb"]){
@@ -28,18 +28,18 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
       }
     });
     return prev;
-  }
+  };
 
   // Find root menu from the breadcrumbs
   rootMenu = function(){
-    prev = 'main'
+    prev = 'main';
 
     $scope.items.forEach(function(item,index){
       if(item["breadcrumb"]){
         return item;
       }
     });
-  }
+  };
 
   // Set shortcut for all the menu items.
   setShortcut = function(item,index) {
@@ -56,7 +56,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     // Set navigation shortcuts with function keys
     key="f" + item
     setNavShortcut(key,item, menu);
-  }
+  };
 
   // Setup the shortcut keys for the back function.
   setBackShortcut = function(key){
@@ -86,7 +86,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         }            
       });
     }
-  }
+  };
 
   // Add navigation keys
   setNavShortcut = function(key,item,menu){
@@ -119,7 +119,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
         e.preventDefault();
       }
     });            
-  }
+  };
   
   // On refresh find the corresponding menu to the page.
   setPageMenu = function(){
@@ -137,7 +137,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
       // Cannot find, just use main
       $scope.setMenu("main")
     }
-  }
+  };
 
   // Given a state eg: 'invoices' return the parent.
   function find_state_menu(state) {
@@ -147,7 +147,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
       result = find_parent($scope.menus[parent], state) // Look for parent
       if(result) return parent      // Return the parent menu name
     }
-  }
+  };
 
   // Given a state eg: 'invoices' return true if we have found the menu
   function find_parent(menu, state){
@@ -162,7 +162,7 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
   // Set the key label
   setKeyLabel = function(key,menu){
     if(menu){ menu["key"] = key; }
-  }
+  };
   
   // Check menus exist
   if($scope.menus){
@@ -177,11 +177,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
       $scope.items.forEach(function(item,index){
         item['exists'] = $state.is(item['state'])
       })
-    }
+    };
     
 
     setPageMenu();
   }
 }];
 
-angular.module('helmsman').controller('HelmsmanController', HelmsmanController)
+angular.module('helmsman').controller('HelmsmanController', HelmsmanController);
