@@ -142,9 +142,9 @@ All classes are namespaced with helmsman
    :CREATED:  [2016-09-14 Wed 17:28]
    :END:
 
-- [ ] Allow disabled flag which will fade out items in the menu but keep them in position
+- [X] Allow disabled flag which will fade out items in the menu but keep them in position
 
-- [ ] Find a way to split the template back to a html file like we had.
+- [ ] Find a way to externalise the template back to a html file like we had.
   The problem was when this goes into test/production on a rails server the URL for the template html
   was not being generated correctly.
 
