@@ -2872,6 +2872,26 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     setNavShortcut(key,item, menu);
   };
 
+  // Set jump shortcuts for all the jump items.
+  setJumpShortcuts = function() {
+    $scope.jumps.forEach(function(item){
+      setJumpShortcut(item)
+    });
+  };
+
+  setJumpShortcut = function(item){
+    hotkeys.add({
+      combo: item.jump_key,
+      description: "Jump to " + item.label,
+      allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+      callback: function(e) {
+        if(item["state"]){ $state.go(item["state"]); }
+        if(item["link"]){  $scope.setMenu(item["link"]); }
+        e.preventDefault();
+      }            
+    });
+  }
+  
   // Setup the shortcut keys for the back function.
   setBackShortcut = function(key){
     if(previousMenu()["breadcrumb"]){
@@ -2996,6 +3016,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
 
     setPageMenu();
   }
+
+  // Check jumps exist
+  if($scope.jumps) {
+    setJumpShortcuts()
+  }
 }];
 
 angular.module('helmsman').controller('HelmsmanController', HelmsmanController);
@@ -3006,8 +3031,9 @@ helmsmanDirective = function(){
         restrict: 'E',
         replace: true,
         scope: {
-            menus: '=',
-            locationToMenu: '='
+          menus: '=',
+          jumps: '=',
+          locationToMenu: '='
         },
         template: '<div>' +
   '<div class="helmsman-breadcrumb">' +
@@ -3037,7 +3063,7 @@ helmsmanDirective = function(){
         '</div>' +
       '</a>' +
 
-      // Item
+      // State
       '<a tabIndex="-1" \
           ui-sref="{{item.state}}" \
           ui-sref-active="helmsman-active-item" \
@@ -3050,7 +3076,40 @@ helmsmanDirective = function(){
       '</a>' +
 
     '</li>' + 
-  '</div>' + 
+
+    '<div ng-if="jumps">' +
+      '<div class="helmsman-heading" ng-if="heading">Jump Menu</div>' + 
+      '<li ng-repeat="item in jumps" ng-if="!item.breadcrumb">' +
+
+        // Jump link
+        '<a id="{{item.link}}_menu_link" \
+            href="" ng-click="setMenu(item.link)" \
+            tabIndex="-1" \
+            ng-if="item.link">' +
+
+          '<div class=helmsman-link>' +
+            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
+
+        // State
+        '<a tabIndex="-1" \
+            ui-sref="{{item.state}}" \
+            ui-sref-active="helmsman-active-item" \
+            ng-if="item.state">' +
+
+          '<div id="{{item.state}}_menu_item">' +
+            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+            '{{item.label}}' +
+          '</div>' +
+        '</a>' +
+      
+      '</li>' +
+        
+    '</div>' +
+  '</div>' +
+
 '</div>', 
         controller: HelmsmanController
     }
