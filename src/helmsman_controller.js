@@ -58,6 +58,26 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     setNavShortcut(key,item, menu);
   };
 
+  // Set jump shortcuts for all the jump items.
+  setJumpShortcuts = function() {
+    $scope.jumps.forEach(function(item){
+      setJumpShortcut(item)
+    });
+  };
+
+  setJumpShortcut = function(item){
+    hotkeys.add({
+      combo: item.jump_key,
+      description: "Jump to " + item.label,
+      allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+      callback: function(e) {
+        if(item["state"]){ $state.go(item["state"]); }
+        if(item["link"]){  $scope.setMenu(item["link"]); }
+        e.preventDefault();
+      }            
+    });
+  }
+  
   // Setup the shortcut keys for the back function.
   setBackShortcut = function(key){
     if(previousMenu()["breadcrumb"]){
@@ -181,6 +201,11 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
     
 
     setPageMenu();
+  }
+
+  // Check jumps exist
+  if($scope.jumps) {
+    setJumpShortcuts()
   }
 }];
 
