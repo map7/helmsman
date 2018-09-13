@@ -4,8 +4,9 @@ helmsmanDirective = function(){
         restrict: 'E',
         replace: true,
         scope: {
-            menus: '=',
-            locationToMenu: '='
+          menus: '=',
+          jumps: '=',
+          locationToMenu: '='
         },
         template: '<div>' +
   '<div class="helmsman-breadcrumb">' +
