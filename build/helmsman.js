@@ -3077,37 +3077,35 @@ helmsmanDirective = function(){
 
     '</li>' + 
 
-    '<div ng-if="jumps">' +
-      '<div class="helmsman-heading" ng-if="heading">Jump Menu</div>' + 
-      '<li ng-repeat="item in jumps" ng-if="!item.breadcrumb">' +
+    '<div class="helmsman-heading" ng-if="heading && jumps">Jump Menu</div>' + 
+    '<li ng-repeat="item in jumps" ng-if="!item.breadcrumb && jumps">' +
 
-        // Jump link
-        '<a id="{{item.link}}_menu_link" \
-            href="" ng-click="setMenu(item.link)" \
-            tabIndex="-1" \
-            ng-if="item.link">' +
+      // Jump link
+      '<a id="{{item.link}}_menu_link" \
+          href="" ng-click="setMenu(item.link)" \
+          tabIndex="-1" \
+          ng-if="item.link && !item.state">' +
 
-          '<div class=helmsman-link>' +
-            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
-            '{{item.label}}' +
-          '</div>' +
-        '</a>' +
+        '<div class=helmsman-link>' +
+          '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+          '{{item.label}}' +
+        '</div>' +
+      '</a>' +
 
-        // State
-        '<a tabIndex="-1" \
-            ui-sref="{{item.state}}" \
-            ui-sref-active="helmsman-active-item" \
-            ng-if="item.state">' +
+      // State
+      '<a tabIndex="-1" \
+          ui-sref="{{item.state}}" \
+          ui-sref-active="helmsman-active-item" \
+          ng-if="item.state">' +
 
-          '<div id="{{item.state}}_menu_item">' +
-            '<span class="helmsman-key">{{item.jump_key}}</span>' + 
-            '{{item.label}}' +
-          '</div>' +
-        '</a>' +
-      
-      '</li>' +
-        
-    '</div>' +
+        '<div id="{{item.state}}_menu_item" class="helmsman_item">' +
+          '<span class="helmsman-key">{{item.jump_key}}</span>' + 
+          '{{item.label}}' +
+        '</div>' +
+      '</a>' +
+
+    '</li>' +
+
   '</div>' +
 
 '</div>', 
