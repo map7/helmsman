@@ -18,7 +18,7 @@
     "test",
     "tests"
   ],
-  "version": "0.3.6",
+  "version": "0.3.7",
   "dependencies": {
     "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0",
     "mousetrap": "mousetrap-js/mousetrap#^1.7.0"
