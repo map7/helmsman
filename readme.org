@@ -49,7 +49,7 @@ Also available in rails-assets just add the following to your Gemfile
 3. Create a main controller for your base angularjs template
    Example: Here I use a home controller in my default.html angularjs template file.
    : <div ng-controller="HomeController">
-   :   <menu-directive menus="menus" location-to-menu="locationToMenu"></menu-directive>
+   :   <menu-directive menus="menus" jumps="jumps" location-to-menu="locationToMenu"></menu-directive>
    :   <div id="wrapper" ui-view=""></div>
    : </div>
 
@@ -86,6 +86,11 @@ Also available in rails-assets just add the following to your Gemfile
    :             {label: "Profile",   state: "profile"}
    :         ]
    :     }
+
+5. Define your jumps (optional)
+   : $scope.jumps = [
+   :   {label: "Invoices",  state: "invoices", link: "costings", jump_key: "ctrl+1"}
+   : ]
 
 *** States
 
