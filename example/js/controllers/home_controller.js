@@ -50,7 +50,7 @@ home = ["$rootScope", "$scope", "$state", "$stateParams", "LedgerService", funct
 
   $scope.jumps = [
     {label: "Settings Menu...", link: "Settings", jump_key: "ctrl+1"},
-    {label: "Invoices", state: "invoices", jump_key: "ctrl+2"},
+    {label: "Invoices", state: "invoices", link: "costings", jump_key: "ctrl+2"},
   ]
   
   // // On the refresh
