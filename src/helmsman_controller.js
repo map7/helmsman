@@ -80,32 +80,23 @@ HelmsmanController = ["$scope", "$state", "hotkeys", function($scope, $state, ho
   
   // Setup the shortcut keys for the back function.
   setBackShortcut = function(key){
-    if(previousMenu()["breadcrumb"]){
-      hotkeys.add({
-        combo: key,
-        description: "Previous Menu",
-        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-        callback: function(e) {
-          if(angular.element(document.getElementById("listing-btn")).length > 0){
-            angular.element(document.getElementById("listing-btn")).click()
-          } else {
-            $scope.setMenu(previousMenu()["breadcrumb"]);
-          }          
-          e.preventDefault();
-        }            
-      });
-    }else{
-      // No more back
-      hotkeys.add({
-        combo: key,
-        description: "Previous Menu",
-        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-        callback: function(e) {
+    hotkeys.add({
+      combo: key,
+      description: "Previous Menu",
+      allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+      callback: function(e) {
+        if(angular.element(document.getElementById("cancel-btn")).length > 0){
+          angular.element(document.getElementById("cancel-btn")).click()
+        } else if(angular.element(document.getElementById("listing-btn")).length > 0){
+          angular.element(document.getElementById("listing-btn")).click()
+        } else if (previousMenu()["breadcrumb"]){
+          $scope.setMenu(previousMenu()["breadcrumb"]);
+        } else {
           console.log("Top Level Menu");
-          e.preventDefault();
-        }            
-      });
-    }
+        }
+        e.preventDefault();
+      }            
+    });
   };
 
   // Add navigation keys
