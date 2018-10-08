@@ -39,7 +39,7 @@ helmsmanDirective = function(){
       // State
       '<a tabIndex="-1" \
           ui-sref="{{item.state}}" \
-          ui-sref-active="helmsman-active-item" \
+          ui-sref-active-eq="helmsman-active-item" \
           ng-if="item.state">' +
 
         '<div id="{{item.state}}_menu_item" ng-class="{helmsman_item: item.exists != undefined, helmsman_missing_item: item.exists == undefined}">' +
@@ -68,7 +68,7 @@ helmsmanDirective = function(){
       // State
       '<a tabIndex="-1" \
           ui-sref="{{item.state}}" \
-          ui-sref-active="helmsman-active-item" \
+          ui-sref-active-eq="helmsman-active-item" \
           ng-if="item.state">' +
 
         '<div id="{{item.state}}_menu_item" class="helmsman_item">' +
