@@ -21,6 +21,7 @@ home = ["$rootScope", "$scope", "$state", "$stateParams", "LedgerService", funct
     costings:  [
       {label: "Main",      breadcrumb: "main"},
       {label: "Invoices",  state: "invoices"},
+      {label: "New Invoice",  state: "new_invoices"},
       {label: "Invoices",  state: "invoices"},
       {label: "Invoices",  state: "invoices"},
       {label: "Invoices",  state: "invoices"},
@@ -33,7 +34,6 @@ home = ["$rootScope", "$scope", "$state", "$stateParams", "LedgerService", funct
       {label: "Invoices",  state: "invoices"},
       {label: "Invoices",  state: "invoices"},
       {label: "Invoices",  state: "invoices"},
-      {label: "Invoices",  state: "invoices"}
     ],
     Settings:  [
       {label: "Main",      breadcrumb: "main"},
